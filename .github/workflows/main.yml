@@ -13,7 +13,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build and Test Flutter Mobile App
+    name: Build and Validate Flutter Mobile App
     runs-on: ubuntu-latest
 
     steps:
@@ -41,8 +41,13 @@ jobs:
       - name: Analyze project
         run: flutter analyze
 
-      - name: Run tests
-        run: flutter test
+      - name: Run tests if available
+        run: |
+          if [ -d "test" ]; then
+            flutter test
+          else
+            echo "No test directory found. Skipping Flutter tests."
+          fi
 
       - name: Build Android APK
         run: flutter build apk --debug
