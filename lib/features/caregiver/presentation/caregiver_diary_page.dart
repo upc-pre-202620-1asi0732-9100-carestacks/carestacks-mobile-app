@@ -60,6 +60,7 @@ class CaregiverDiaryPage extends StatelessWidget {
                         child: FilledButton.icon(
                           onPressed: () => _showDiarySheet(context),
                           style: FilledButton.styleFrom(
+                            minimumSize: const Size(0, 56),
                             backgroundColor: AppColors.primary,
                             foregroundColor: AppColors.primaryLight,
                             shape: RoundedRectangleBorder(
